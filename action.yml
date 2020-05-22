@@ -1,0 +1,17 @@
+name: "Conventional Commit Checker"
+description: "validate PR for conventional commit"
+branding:
+  icon: "git-commit"
+  color: "green"
+inputs:
+  pr-title-regex:
+    description: "You can override the regex that is used to match PR title "
+    required: false
+    default: "^(.+)(?:(([^)s]+)))?: (.+)"
+  pr-body-regex:
+    description: "You can override the regex that is used to match PR body "
+    required: false
+    default: '(.*\n)+(.*)'
+runs:
+  using: "node12"
+  main: "dist/index.js"
