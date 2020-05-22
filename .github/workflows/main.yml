@@ -14,3 +14,11 @@ jobs:
        echo hello world
 
 
+    - name: Hello world action step
+      id: hello
+      uses: ../../
+      with:
+        who-to-greet: 'Mona the Octocat'
+    # Use the output from the `hello` step
+    - name: Get the output time
+      run: echo "The time was ${{ steps.hello.outputs.time }}"
