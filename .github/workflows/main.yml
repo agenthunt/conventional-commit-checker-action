@@ -11,10 +11,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Hello world action step
+      - name: Say Hello to <who-to-greet>
         id: hello
         uses: ./
         with:
           who-to-greet: 'Agent Hunt'
-      - name: Get the output time
-        run: echo "The time was ${{ steps.hello.outputs.time }}"
+      - name: What was the time of the greet?
+        run: echo "The time of the greet was ${{ steps.hello.outputs.time }}"
