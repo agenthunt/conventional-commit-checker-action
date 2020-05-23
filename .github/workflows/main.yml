@@ -11,12 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
-    - name: Building app
-      run: |
-       echo hello world
-
-
     - name: Hello world action step
       id: hello
       uses: ./
