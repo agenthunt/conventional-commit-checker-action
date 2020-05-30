@@ -15,9 +15,7 @@ jobs:
           node-version: '12.x'
       - run: npm install
       - run: npm run build --if-present
-      
+
       - name: check-for-cc
         id: hello
         uses: ./
-        with:
-          who-to-greet: 'Agent Hunt'

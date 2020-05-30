@@ -2,9 +2,10 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 try {
-  // Get the JSON webhook payload for the event that triggered the workflow
-  const payload = JSON.stringify(github.context.payload.pull_request.title, undefined, 2)
-  console.log(`The event payload: ${payload}`);
+  const title = JSON.stringify(github.context.payload.pull_request.title, undefined, 2)
+  const body  = JSON.stringify(github.context.payload.pull_request.body, undefined, 2)
+  console.log(`pr title: ${title}`);
+  console.log(`pt body: ${body}`);
 
 } catch (error) {
   core.setFailed(error.message);
