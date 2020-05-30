@@ -8,6 +8,11 @@ try {
   const time = (new Date()).toTimeString();
   // set an output variable time with value time of greeting
   core.setOutput("time", time);
+
+  // Get the JSON webhook payload for the event that triggered the workflow
+  const payload = JSON.stringify(github.context, undefined, 2)
+  console.log(`The event payload: ${payload}`);
+
 } catch (error) {
   core.setFailed(error.message);
 }
