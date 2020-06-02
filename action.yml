@@ -4,7 +4,7 @@ inputs:
   pr-title-regex:  
     description: 'You can override the regex that is used to match PR title '
     required: false
-    default: '^(\w+)(?:\(([^\)\s]+)\))?: (.+))'
+    default: '^(\w+)(?:\(([^\)\s]+)\))?: (.+)'
   pr-body-regex:  
     description: 'You can override the regex that is used to match PR body '
     required: false
