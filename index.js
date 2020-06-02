@@ -2,8 +2,10 @@ const core = require('@actions/core');
 const github = require('@actions/github');
 
 function regexFromString (string) {
-  var match = /^\/(.*)\/([a-z]*)$/.exec(string)
-  return new RegExp(match[1], match[2])
+  const escapedRegexString = string
+		.replace(/[|\\{}()[\]^$+*?.]/g, '\\$&')
+		.replace(/-/g, '\\x2d');
+  return new RegExp(escapedRegexString)
 }
 
 try {
@@ -17,6 +19,7 @@ try {
     core.setFailed(`Pull request title ${title} does not match ${prTitleRegexPattern}`);
     return;
   }
+  prTitleRegexPattern.match()
 
   const prBodyRegexPattern = core.getInput("pr-body-regex");
   const prBodyRegExp = regexFromString(prBodyRegexPattern)
