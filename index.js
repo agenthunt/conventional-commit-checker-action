@@ -11,9 +11,9 @@ try {
 
   const prTitleRegexPattern = core.getInput("pr-title-regex");
   
-  const prTitleRegExp = new RegExp(prTitleRegexPattern);
+  const prTitleRegExp = new RegExp(escapeRegExp(prTitleRegexPattern));
   if(!prTitleRegExp.test(title)){
-    core.setFailed(`Pull request title does not match ${prTitleRegexPattern}`);
+    core.setFailed(`Pull request title ${title} does not match ${prTitleRegexPattern}`);
     return;
   }
 
