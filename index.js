@@ -1,21 +1,24 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
 
+function escapeRegExp(string) {
+  return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
 try {
   const title = JSON.stringify(github.context.payload.pull_request.title, undefined, 2)
   const body  = JSON.stringify(github.context.payload.pull_request.body, undefined, 2)
-  console.log(`pr title: ${title}`);
-  console.log(`pr body: ${body}`);
+
   const prTitleRegexPattern = core.getInput("pr-title-regex");
   
-  const prTitleRegExp = new RegExp(prTitleRegexPattern);
+  const prTitleRegExp = new RegExp(escapeRegExp(prTitleRegexPattern));
   if(!prTitleRegExp.test(title)){
     core.setFailed(`Pull request title does not match ${prTitleRegexPattern}`);
     return;
   }
 
   const prBodyRegexPattern = core.getInput("pr-body-regex");
-  const prBodyRegExp = new RegExp(prBodyRegexPattern);
+  const prBodyRegExp = new RegExp(escapeRegExp(prBodyRegexPattern));
   if(!prBodyRegExp.test(body)){
     core.setFailed(`Pull request body does not match ${prBodyRegexPattern}`);
     return;
