@@ -1,14 +1,14 @@
-name: 'Conventional Commit Checker'
-description: 'validate PR for conventional commit'
+name: "Conventional Commit Checker"
+description: "validate PR for conventional commit"
 inputs:
-  pr-title-regex:  
-    description: 'You can override the regex that is used to match PR title '
+  pr-title-regex:
+    description: "You can override the regex that is used to match PR title "
     required: false
-    default: '^(\w+)(?:\(([^\)\s]+)\))?: (.+)'
-  pr-body-regex:  
-    description: 'You can override the regex that is used to match PR body '
+    default: "^(.+)(?:(([^)s]+)))?: (.+)"
+  pr-body-regex:
+    description: "You can override the regex that is used to match PR body "
     required: false
-    default: '^((?:^.+(\n|$))+(?:\n|$){0,2}?)+((?:^.+(\n|$))+)+'
+    default: '(.*\n)+(.*)'
 runs:
-  using: 'node12'
-  main: 'dist/index.js'
+  using: "node12"
+  main: "dist/index.js"
