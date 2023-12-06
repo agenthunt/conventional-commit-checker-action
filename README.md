@@ -32,7 +32,7 @@ jobs:
     steps:
       - name: check-for-cc
         id: check-for-cc
-        uses: agenthunt/conventional-commit-checker-action@v1.0.0
+        uses: agenthunt/conventional-commit-checker-action@v2.0.0
 ```
 
 ## NOTE
