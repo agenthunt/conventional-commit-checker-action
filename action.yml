@@ -12,6 +12,15 @@ inputs:
     description: "You can override the regex that is used to match PR body "
     required: false
     default: '(.*\n)+(.*)'
+  jira-base-url:
+    description: "Jira base URL (e.g., https://company.atlassian.net). If not provided, Jira validation is skipped."
+    required: false
+  jira-email:
+    description: "Jira user email for authentication. Required if jira-base-url is provided."
+    required: false
+  jira-api-token:
+    description: "Jira API token for authentication. Required if jira-base-url is provided."
+    required: false
 runs:
   using: "node12"
   main: "dist/index.js"

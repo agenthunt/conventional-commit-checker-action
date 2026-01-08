@@ -1,4 +1,4 @@
-export function validatePR({
+function validatePR({
   title,
   body,
   prTitleRegexPattern,
@@ -9,10 +9,10 @@ export function validatePR({
   if (!prTitleMatchResult) {
     return {
       status: "failure",
-      message: `Pull request title 
+      message: `Pull request title
       **************************************************************************************
       ${title}
-      ************************************************************************************** 
+      **************************************************************************************
       does not match ${prTitleRegexPattern}`,
     };
   }
@@ -21,7 +21,7 @@ export function validatePR({
   if (!prBodyRegExp.test(body)) {
     return {
       status: "failure",
-      message: `Pull request body 
+      message: `Pull request body
       **************************************************************************************
       ${body}
       **************************************************************************************
@@ -31,7 +31,7 @@ export function validatePR({
   return {
     status: "success",
     message: `
-      Pull request title 
+      Pull request title
       **************************************************************************************
       ${title}
       **************************************************************************************
@@ -44,3 +44,5 @@ export function validatePR({
       `,
   };
 }
+
+module.exports = { validatePR };
